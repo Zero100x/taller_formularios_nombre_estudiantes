@@ -17,10 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'asistencia',
+    'solicitudes',
 ]
 
-if importlib.util.find_spec('solicitudes') is not None:
-    INSTALLED_APPS.append('solicitudes')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
