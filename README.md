@@ -180,5 +180,5 @@ Luego los cambios pueden pasar a `develop` y finalmente a `main`.
 
 ## Autor
 
-Diego Ceron
-Willam Inzandara
+- Diego Ceron
+- Willam Inzandara
