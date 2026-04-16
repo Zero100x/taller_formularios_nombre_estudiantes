@@ -1,6 +1,9 @@
 # Taller Formularios Nombre Estudiantes
 
-Proyecto desarrollado con Django para gestionar formularios academicos. En esta primera parte se implemento la app `asistencia`, que permite registrar la asistencia de estudiantes mediante un formulario web y administrar la informacion desde el panel de Django.
+Proyecto desarrollado con Django para el taller de formularios. El sistema contiene dos aplicaciones independientes:
+
+- `asistencia`: registra la asistencia de estudiantes.
+- `solicitudes`: permite enviar solicitudes con archivo adjunto opcional.
 
 Repositorio: `https://github.com/Zero100x/taller_formularios_nombre_estudiantes`
 
@@ -50,9 +53,12 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-Luego abre en el navegador:
+## Rutas disponibles
 
-- Formulario de asistencia: `http://127.0.0.1:8000/`
+- Inicio del proyecto y formulario de asistencia: `http://127.0.0.1:8000/`
+- Confirmacion de asistencia: `http://127.0.0.1:8000/confirmacion/`
+- Formulario de solicitudes: `http://127.0.0.1:8000/solicitudes/`
+- Confirmacion de solicitudes: `http://127.0.0.1:8000/solicitudes/confirmacion/`
 - Panel de administracion: `http://127.0.0.1:8000/admin/`
 
 ## Crear un superusuario
@@ -63,13 +69,52 @@ Para ingresar al panel administrativo:
 python manage.py createsuperuser
 ```
 
+## Ejecutar pruebas
+
+```bash
+python manage.py test
+```
+
+Actualmente el proyecto incluye pruebas automaticas basicas para la app `asistencia`.
+
 ## Funcionalidades actuales
 
-- Registro de asistencia con formulario web.
-- Validacion de campos desde Django Forms.
-- Confirmacion visual despues de guardar el registro.
-- Administracion de asistencias desde el panel de Django.
-- Base de datos SQLite configurada por defecto.
+- Registro de asistencia mediante `ModelForm`.
+- Registro de solicitudes mediante `ModelForm`.
+- Almacenamiento de datos en SQLite.
+- Confirmacion visual despues de enviar cada formulario.
+- Carga opcional de archivos en la app `solicitudes`.
+- Consulta de registros desde el panel de administracion de Django.
+- Configuracion del proyecto en espanol de Colombia y zona horaria `America/Bogota`.
+
+## Aplicaciones del proyecto
+
+### App `asistencia`
+
+Permite registrar:
+
+- Nombre completo
+- Documento de identidad
+- Correo electronico
+- Fecha de asistencia
+- Hora de ingreso
+- Hora de salida
+- Presente
+- Observaciones
+
+### App `solicitudes`
+
+Permite registrar:
+
+- Nombre del solicitante
+- Documento de identidad
+- Correo electronico
+- Telefono de contacto
+- Tipo de solicitud
+- Asunto
+- Descripcion detallada
+- Fecha de la solicitud
+- Archivo adjunto opcional
 
 ## Estructura principal
 
@@ -79,36 +124,61 @@ taller_formularios_nombre_estudiantes/
 |   |-- admin.py
 |   |-- forms.py
 |   |-- models.py
+|   |-- tests.py
 |   |-- urls.py
 |   |-- views.py
+|   |-- migrations/
 |   `-- templates/asistencia/
+|       |-- registro.html
+|       `-- confirmacion.html
+|-- solicitudes/
+|   |-- admin.py
+|   |-- forms.py
+|   |-- models.py
+|   |-- tests.py
+|   |-- urls.py
+|   |-- views.py
+|   |-- migrations/
+|   `-- templates/solicitudes/
 |       |-- registro.html
 |       `-- confirmacion.html
 |-- taller_formularios_nombre_estudiantes/
 |   |-- settings.py
-|   `-- urls.py
+|   |-- urls.py
+|   |-- asgi.py
+|   `-- wsgi.py
 |-- manage.py
-`-- requirements.txt
+|-- requirements.txt
+`-- README.md
 ```
 
-## Modelo principal
+## Flujo de ramas
 
-La app `asistencia` almacena:
+El repositorio se organizo con estas ramas:
 
-- Nombre completo
-- Documento de identidad
-- Correo electronico
-- Fecha de asistencia
-- Hora de ingreso
-- Hora de salida
-- Estado de presencia
-- Observaciones
+- `main`: rama estable
+- `develop`: rama de integracion
+- `Diego`: rama de trabajo individual
+- `William`: rama de trabajo individual
+
+Ejemplo de uso:
+
+```bash
+git switch Diego
+git add .
+git commit -m "Describe tu cambio"
+git push origin Diego
+```
+
+Luego los cambios pueden pasar a `develop` y finalmente a `main`.
 
 ## Notas
 
-- El proyecto esta configurado con idioma `es-co` y zona horaria `America/Bogota`.
-- La app `solicitudes` podra agregarse despues sin romper la configuracion actual del proyecto.
+- Las apps `asistencia` y `solicitudes` estan registradas en `INSTALLED_APPS`.
+- El proyecto usa SQLite por defecto.
+- Los archivos adjuntos de `solicitudes` se guardan en la carpeta `media/`.
 
 ## Autor
 
 Diego Ceron
+Willam Inzandara
