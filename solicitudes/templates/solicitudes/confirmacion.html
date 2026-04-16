@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitud Enviada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); min-height: 100vh; }
+    </style>
+</head>
+<body class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="card p-5">
+                    <div class="mb-4">
+                        <span style="font-size: 80px;">📬</span>
+                    </div>
+                    <h2 class="text-danger fw-bold">¡Solicitud Enviada!</h2>
+                    <p class="text-muted fs-5">Tu solicitud fue recibida y registrada exitosamente.</p>
+                    <a href="{% url 'registro_solicitud' %}" class="btn btn-danger mt-3">
+                        📨 Enviar otra solicitud
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
