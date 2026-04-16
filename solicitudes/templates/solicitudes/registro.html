@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Solicitud</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); min-height: 100vh; }
+        .card { border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .card-header { background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 15px 15px 0 0 !important; }
+    </style>
+</head>
+<body class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-white text-center py-4">
+                        <h2>📨 Formulario de Solicitud</h2>
+                        <p class="mb-0">Diligencia todos los campos para enviar tu solicitud</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">👤 Nombre del Solicitante *</label>
+                                {{ form.nombre_solicitante }}
+                                {% if form.nombre_solicitante.errors %}
+                                    <div class="text-danger">{{ form.nombre_solicitante.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">🪪 Documento de Identidad *</label>
+                                {{ form.documento_identidad }}
+                                {% if form.documento_identidad.errors %}
+                                    <div class="text-danger">{{ form.documento_identidad.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">📧 Correo Electrónico *</label>
+                                    {{ form.correo_electronico }}
+                                    {% if form.correo_electronico.errors %}
+                                        <div class="text-danger">{{ form.correo_electronico.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">📞 Teléfono *</label>
+                                    {{ form.telefono_contacto }}
+                                    {% if form.telefono_contacto.errors %}
+                                        <div class="text-danger">{{ form.telefono_contacto.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">📂 Tipo de Solicitud *</label>
+                                {{ form.tipo_solicitud }}
+                                {% if form.tipo_solicitud.errors %}
+                                    <div class="text-danger">{{ form.tipo_solicitud.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">📌 Asunto *</label>
+                                {{ form.asunto }}
+                                {% if form.asunto.errors %}
+                                    <div class="text-danger">{{ form.asunto.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">📝 Descripción Detallada *</label>
+                                {{ form.descripcion_detallada }}
+                                {% if form.descripcion_detallada.errors %}
+                                    <div class="text-danger">{{ form.descripcion_detallada.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">📅 Fecha de la Solicitud *</label>
+                                {{ form.fecha_solicitud }}
+                                {% if form.fecha_solicitud.errors %}
+                                    <div class="text-danger">{{ form.fecha_solicitud.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">📎 Archivo Adjunto (opcional)</label>
+                                {{ form.archivo_adjunto }}
+                                <div class="form-text">Puedes adjuntar documentos de soporte.</div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger btn-lg">
+                                    🚀 Enviar Solicitud
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
